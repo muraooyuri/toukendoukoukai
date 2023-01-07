@@ -1,44 +1,19 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-* 
-
 # 刀剣同好会
 
-## サイト概要
-投稿者の刀剣に対する想いや刀剣の魅力を共有し広く繋がる事が出来る場所があればいいなと思いました。
 ### サイトテーマ
-全国の刀剣を愛する人と情報を共有出来て語れる場所
+全国の刀剣を愛する人と情報を共有出来て語れる場所(コミュニティサイト)
 
 ### テーマを選んだ理由
 PFを製作するなら大好きな刀剣に関する作品にしようと決めていました。
+お互いに刀剣に関する様々な情報を共有する事で知識を深めると同時に、多くの人と交流が出来て人との繋がりが持てる場
+また、情報を共有することで刀剣に関する神社やお寺や美術館などに人が訪れることで施設の利益にも繋がると思います。
 
 ### ターゲットユーザ
 刀剣好きな人
 
 ### 主な利用シーン
-刀剣に関する情報をユーザー同士で共有
+実際に刀剣を見た人の感想や施設等の情報を共有できる場所があれば入場料などから施設にも利益が生まれ
+多くの人が訪れるようになれば電車などの交通機関や地域の利益に繋がる
 
 ## 設計書
 
@@ -48,7 +23,3 @@ PFを製作するなら大好きな刀剣に関する作品にしようと決め
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-
-## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
