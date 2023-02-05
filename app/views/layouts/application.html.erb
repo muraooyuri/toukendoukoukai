@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ToukenDoukoukai</title>
+   <title>刀剣同好会</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+     <%= csrf_meta_tags %>
+     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+    <header>
+      
+  　</header>
+ 
+ <%= yield %>
+    <footer>
+      <div class="container mt-5">
+       <div class="row">
+        <div class="mx-auto">
+        <p>刀剣同好会</p>
+        </div>
+       </div>
+      </div>
+    </footer>
+  </body>  
 </html>

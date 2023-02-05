@@ -1,0 +1,2 @@
+class Touken < ApplicationRecord
+end
