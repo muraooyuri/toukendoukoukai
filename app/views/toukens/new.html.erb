@@ -1,0 +1,16 @@
+<main>
+ <h1 class= "mt-3">投稿フォーム</h1>
+   <%= form_with model: @touken do |f|%>
+    <div class="form-group">
+       <label for="touken_title">タイトル</label><br>
+        <%= f.text_field :title%>
+     </div>
+       <div class="form-group">
+        <label for="book_opinion">投稿内容</label><br>
+        <%= f.text_area :body%>
+      </div>
+     <div class="form-group">
+      <%= f.submit'投稿' %>
+    </div>
+  <% end %>
+</main>

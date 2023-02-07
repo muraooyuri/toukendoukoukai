@@ -1,2 +1,2 @@
-module ListsHelper
+module ToukenHelper
 end

@@ -63,7 +63,7 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
-
+  config.active_job.queue_adapter = :inline
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
 
@@ -73,4 +73,5 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  config.hosts << "35781499afdb420dba97495c5e446d3a.vfs.cloud9.ap-northeast-1.amazonaws.com"
 end

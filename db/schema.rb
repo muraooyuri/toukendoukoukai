@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2023_02_05_122433) do
 
   create_table "toukens", force: :cascade do |t|
     t.string "title"
+    t.integer "user_id"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
