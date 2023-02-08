@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   #get 'home/about'=>'homus#about', as: 'about'
   root to: 'homus#top'
   resources :toukens, only: [:create, :new, :index, :show, :destroy, :edit]
+  
+  resources :users, only: [:create, :index, :show, :destroy, :edit]
   #get 'touken/new'
   #get 'touken/index'
   #get 'touken/show'

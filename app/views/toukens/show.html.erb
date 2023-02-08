@@ -1,2 +1,19 @@
-<h1>Touken#show</h1>
-<p>Find me in app/views/touken/show.html.erb</p>
+<main>
+  <div class="col-md-11 offset-md-2">
+   <%= flash[:notice] %>
+    <h2>みんなの投稿一覧</h2>
+     <table class= "table">
+        <tbody>
+         <tr>
+           <td>
+            <%= link_to user_path(@user.id) do %>
+             <%= @user.name%>
+            <% end %>
+           </td>
+           <td><%= @touken.title %></td>
+           <td><%= @touken.body %></td>
+         </tr>
+       </tbody>
+     </table>
+  </div>
+</main>

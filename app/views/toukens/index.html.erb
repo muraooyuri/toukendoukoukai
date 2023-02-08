@@ -1,0 +1,26 @@
+<main>
+  <div class="col-md-10 offset-md-2">
+    <h2>みんなの投稿</h2>
+      <table class= "table table-hover table-inverse">
+       <thead>
+        <tr>
+          <th>タイトル</th>
+          <th>内容</th>
+          <th colspan="4"></th>
+        </tr>
+       </thead>
+     <tbody>
+  <% @toukens.each do | touken | %>
+    <tr>
+      <th><%= link_to touken_path(touken) do %><%=touken.title %><% end %></th>
+        <th><%=touken.body %></th>
+        <td id="favorite_buttons_<%= touken.id %>">
+           <%= render "favorites/favorite", touken: touken %>
+        </td>
+       <th><%=# link_to "#{touken.touken_comments.count} コメント", touken_path(touken.id) %></th>
+    </tr>
+   <% end %>
+      </tbody>
+     </table>
+  </div>
+</main>
