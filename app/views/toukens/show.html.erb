@@ -1,19 +1,28 @@
 <main>
-  <div class="col-md-11 offset-md-2">
-   <%= flash[:notice] %>
-    <h2>みんなの投稿一覧</h2>
-     <table class= "table">
+  <div class= "container">
+    <div class="row">
+     <div>
+       <%= flash[:notice] %>
+     </div>
+      <div class="col-md-11 offset-md-2">
+ <h2><%= @user.name %>さんの投稿詳細ページ</h2>
+   <table class= "table">
         <tbody>
          <tr>
            <td>
             <%= link_to user_path(@user.id) do %>
-             <%= @user.name%>
+              <%= @user.name%>
             <% end %>
-           </td>
-           <td><%= @touken.title %></td>
-           <td><%= @touken.body %></td>
-         </tr>
-       </tbody>
-     </table>
-  </div>
+            </td>
+            <td><%= @touken.title %></td>
+            <td><%= @touken.body %></td>
+            <td><%= image_tag @touken.image.variant(resize: '200x200') %></td>
+            <td><%= link_to "投稿の編集" ,edit_touken_path(@touken) %></td>
+            <td><%= link_to "削除する", touken_path(@touken), method: :delete %></td>
+          </tr>
+        </tbody>
+      </div>
+    </div>
+   </div>
+  </table>
 </main>

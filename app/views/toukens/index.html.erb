@@ -1,26 +1,35 @@
 <main>
-  <div class="col-md-10 offset-md-2">
-    <h2>みんなの投稿</h2>
-      <table class= "table table-hover table-inverse">
-       <thead>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-11 offset-md-2">
+      <h2>みんなの投稿</h2>
+        <table class= "table table-hover table-inverse">
+         <thead>
         <tr>
-          <th>タイトル</th>
+          <th>題名</th>
           <th>内容</th>
-          <th colspan="4"></th>
+          <th colspan="4">画像</th>
         </tr>
        </thead>
      <tbody>
   <% @toukens.each do | touken | %>
     <tr>
-      <th><%= link_to touken_path(touken) do %><%=touken.title %><% end %></th>
-        <th><%=touken.body %></th>
-        <td id="favorite_buttons_<%= touken.id %>">
-           <%= render "favorites/favorite", touken: touken %>
+      <th><%= link_to touken_path(touken) do %><%= touken.title %><% end %></th>
+        <th><%= touken.body %></th>
+          <th>
+            <% if touken.image.attached? %>
+             <%= image_tag touken.image.variant(resize: '200x200') %>
+            <% end %>
+          </th>
+         <td id="favorite_buttons_<%= touken.id %>">
+           <%#= render "favorites/favorite", touken: touken %>
         </td>
-       <th><%=# link_to "#{touken.touken_comments.count} コメント", touken_path(touken.id) %></th>
+      <th><%#= link_to "#{touken.touken_comments.count} コメント", touken_path(touken.id) %></th>
     </tr>
    <% end %>
-      </tbody>
-     </table>
+     </tbody>
+      </table>
+      </div>
+    </div>
   </div>
 </main>

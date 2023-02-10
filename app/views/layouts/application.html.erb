@@ -13,10 +13,16 @@
     <header>
      <% if user_signed_in? %>
       <li>
-        <%= link_to "投稿", new_touken_path %>
+        <%= link_to "新規投稿", new_touken_path %>
       </li>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+      <li>
+        <%#= link_to "投稿一覧", toukens_path %>
+      </li>
+      <li>
+        <%= link_to "ユーザー一覧", users_path %>
       </li>
     <% else %>
       <li>

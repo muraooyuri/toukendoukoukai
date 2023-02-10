@@ -2,19 +2,23 @@
   <div class= "container">
     <div class="row">
       <div class= "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h1>みんなの投稿</h1>
-        <%= form_with model: @touken do |f|%>
-          <div class="form-group">
-            <label for="touken_title">タイトル</label><br>
+      <h1>新規投稿</h1>
+        <%= form_with model: @touken, multipart: true do |f|%>
+         <div class="form-group">
+            <label for="touken_title">題名</label><br>
             <%= f.text_field :title%>
-          </div>
-           <div class="form-group">
-             <label for="book_opinion">投稿内容</label><br>
-             <%= f.text_area :body%>
-           </div>
-           <div class="form-group">
-             <%= f.submit'投稿' %>
-           </div>
+         </div>
+         <div class="form-group">
+            <label for="touken_body">投稿内容</label><br>
+            <%= f.text_area :body%>
+         </div>
+         <div class="form-group">
+            <label for="image">画像</label><br>
+            <%= f.file_field :image, accept: "image/*"  %>
+         </div>
+         <div class="form-group">
+            <%= f.submit'投稿する' %>
+         </div>
         <% end %>
        </div>
     </div>

@@ -30,12 +30,21 @@ class ToukensController < ApplicationController
   end
 
   def edit
+    @touken = Touken.find(params[:id])
+    if @touken.user != current_user
+     redirect_to toukens_path
+    end
   end
 
+  def destroy
+    @touken = Touken.find(params[:id])
+    @touken.destroy
+    redirect_to '/toukens'
+  end
 
   private
 
   def touken_params
-    params.require(:touken).permit(:title, :body)
+    params.require(:touken).permit(:title, :body, :image)
   end
 end

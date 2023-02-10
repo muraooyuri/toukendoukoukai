@@ -1,2 +1,27 @@
-<h1>Touken#edit</h1>
-<p>Find me in app/views/touken/edit.html.erb</p>
+<main>
+   <div class= "container">
+      <div class="row">
+        <div class= "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+         <% if @touken.errors.any? %>
+          <%= @touken.errors.count %>errors prohibited this obj from being saved:
+          <ul>
+           <% @touken.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+           <% end %>
+          </ul>
+         <% end %>
+     <h2><%= @user.name %>さんの投稿編集ページ</h2>
+          <%= form_with model: @touken do |f| %>
+            <label for="toukenTitle">題名</label><br>
+             <%= f.text_field :title, autofocus: true, id:"touken_title"%><br>
+            <label for="toukenBody">投稿内容</label><br>
+             <%= f.text_area :body %><br>
+            <%= f.submit "投稿を編集" %>
+          <% end %>
+        <%= link_to "刀剣の詳細ページ" ,touken_path(@touken) %>
+           |
+        <%= link_to "戻る" ,toukens_path %>
+       </div>
+     </div>
+   </div>
+</main>

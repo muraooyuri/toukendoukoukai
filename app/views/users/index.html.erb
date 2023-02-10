@@ -1,22 +1,31 @@
 <main>
-  <div class= "container px-5 px-sm-0">
-    <div class= "row">
-      <div class= "col-lg-11">
-      <h2>みんなの投稿</h2>
-       <%= form_with model: @touken do |f|%>
-        <div class="form-group">
-          <label for="touken_title">タイトル</label><br>
-          <%= f.text_field :title%>
-        </div>
-        <div class="form-group">
-          <label for="touken_body">投稿内容</label><br>
-          <%= f.text_area :body%>
-        </div>
-        <div class="form-group">
-          <%= f.submit'投稿' %>
-       <% end %>
-        </div>
-      </div>
-    </div> 
+  <div class="col-md-11 offset-md-2">
+    <h2>みんなの投稿</h2>
+      <table class= "table table-hover table-inverse">
+       <thead>
+        <tr>
+          <th>タイトル</th>
+          <th>内容</th>
+          <th colspan="4"></th>
+        </tr>
+       </thead>
+     <tbody>
+  <% @toukens.each do | touken | %>
+    <tr>
+      <th><%= link_to touken_path(touken) do %><%=touken.title %><% end %></th>
+      <th><%=touken.body %></th>
+      <th>
+        <% if touken.image.attached? %>
+          <%= image_tag touken.image.variant(resize: '200x200') %>
+        <% end %>
+      </th>
+        <td id="favorite_buttons_<%= touken.id %>">
+           <%#= render "favorites/favorite", touken: touken %>
+        </td>
+       <th><%#= link_to "#{touken.touken_comments.count} コメント", touken_path(touken.id) %></th>
+    </tr>
+   <% end %>
+      </tbody>
+     </table>
   </div>
 </main>
