@@ -25,6 +25,8 @@ class ToukensController < ApplicationController
   def show
     #@toukens = Touken.all
     @touken= Touken.find(params[:id])
+    @touken_comment = ToukenComment.new
+    @touken_comments = @touken.id
     @touken_new= Touken.new
     @user= @touken.user
   end
@@ -40,6 +42,16 @@ class ToukensController < ApplicationController
     @touken = Touken.find(params[:id])
     @touken.destroy
     redirect_to '/toukens'
+  end
+  
+  def update
+    @touken = Touken.find(params[:id])
+    if @touken.update(touken_params)
+     flash[:notice] = "編集が成功しました"
+     redirect_to touken_path(@touken)
+    else
+     render :edit
+    end
   end
 
   private

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- 
+  get 'search' => 'searches#search'
   #get 'user/index'
   #get 'user/show'
   #get 'user/edit'
@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   #get 'home/about'=>'homus#about', as: 'about'
   root to: 'homus#top'
   
-  resources :toukens, only: [:create, :new, :index, :show, :destroy, :edit] do
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+  
+  resources :toukens, only: [:create, :new, :index, :show, :destroy, :edit, :update] do
     resource :favorites, only: [:create, :destroy]
     resources :touken_comments, only: [:create, :destroy]
   end

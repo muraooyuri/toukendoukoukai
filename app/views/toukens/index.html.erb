@@ -1,7 +1,10 @@
 <main>
-  <div class="container">
-    <div class="row mt-5">
-      <div class="col-md-11 offset-md-2">
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      <div class="col-md-3">
+        <%= render "layouts/sidebar" %>
+       </div>
+    <div class="col-md-9">
       <h2>みんなの投稿</h2>
         <table class= "table table-hover table-inverse">
          <thead>
@@ -22,11 +25,11 @@
             <% end %>
           </th>
          <td id="favorite_buttons_<%= touken.id %>">
-           <%#= render "favorites/favorite", touken: touken %>
+           <%= render "favorites/favorite", touken: touken %>
         </td>
-      <th><%#= link_to "#{touken.touken_comments.count} コメント", touken_path(touken.id) %></th>
+      <th><%= link_to "#{touken.touken_comments.count} コメント", touken_path(touken.id) %></th>
     </tr>
-   <% end %>
+  <% end %>
      </tbody>
       </table>
       </div>

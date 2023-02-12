@@ -10,7 +10,7 @@
            <% end %>
           </ul>
          <% end %>
-     <h2><%= @user.name %>さんの投稿編集ページ</h2>
+     <h2>投稿編集ページ</h2>
           <%= form_with model: @touken do |f| %>
             <label for="toukenTitle">題名</label><br>
              <%= f.text_field :title, autofocus: true, id:"touken_title"%><br>
@@ -18,7 +18,7 @@
              <%= f.text_area :body %><br>
             <%= f.submit "投稿を編集" %>
           <% end %>
-        <%= link_to "刀剣の詳細ページ" ,touken_path(@touken) %>
+        <%= link_to "刀剣詳細" ,touken_path(@touken) %>
            |
         <%= link_to "戻る" ,toukens_path %>
        </div>

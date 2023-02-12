@@ -2,6 +2,9 @@
   <div class= "container">
     <div class="row">
       <div class= "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <div class= "col-md-3">
+          <%= render "layouts/sidebar" %>
+        </div>
       <h1>新規投稿</h1>
         <%= form_with model: @touken, multipart: true do |f|%>
          <div class="form-group">

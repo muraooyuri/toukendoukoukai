@@ -1,0 +1,9 @@
+<% if touken.favorited_by?(current_user) %>
+ <%= link_to touken_favorites_path(touken), method: :delete, remote: true do %>
+  ♥<%= touken.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to touken_favorites_path(touken), method: :post, remote: true do %>
+  ♡<%= touken.favorites.count %>
+  <% end %>
+<% end %>

@@ -1,28 +1,56 @@
 <main>
-  <div class= "container">
+  <div class= "container px-5 px-sm-0">
     <div class="row">
-     <div>
-       <%= flash[:notice] %>
+     <div class="col-md-3">
+       <%= render "layouts/sidebar" %>
      </div>
-      <div class="col-md-11 offset-md-2">
- <h2><%= @user.name %>さんの投稿詳細ページ</h2>
-   <table class= "table">
-        <tbody>
-         <tr>
-           <td>
-            <%= link_to user_path(@user.id) do %>
-              <%= @user.name%>
-            <% end %>
-            </td>
-            <td><%= @touken.title %></td>
-            <td><%= @touken.body %></td>
-            <td><%= image_tag @touken.image.variant(resize: '200x200') %></td>
-            <td><%= link_to "投稿の編集" ,edit_touken_path(@touken) %></td>
-            <td><%= link_to "削除する", touken_path(@touken), method: :delete %></td>
-          </tr>
-        </tbody>
+      <div>
+        <%= flash[:notice] %>
       </div>
-    </div>
+    <div class="col-md-9">
+  <h2><%= @user.name %>さんの投稿詳細</h2>
+      <table class= "table">
+         <tbody>
+           <tr>
+             <td>
+              <%= link_to user_path(@user.id) do %>
+                <%= @user.name%>
+              <% end %>
+             </td>
+             <td><%= @touken.title %></td>
+             <td><%= @touken.body %></td>
+             <td id="favorite_buttons_<%= @touken.id %>">
+               <%= render "favorites/favorite", touken: @touken %>
+             </td>
+             <td><%= image_tag @touken.image.variant(resize: '200x200') %></td>
+             <td>コメント件数：<%= @touken.touken_comments.count %></td>
+              <% if @touken.user == current_user %>
+                <td><%= link_to "投稿編集" ,edit_touken_path(@touken) %></td>
+                <td><%= link_to "削除する", touken_path(@touken), method: :delete %></td>
+              <% end %>
+           </tr>
+         </tbody>
+      </table>
+   <div class = "touken-comments-index">
+     <table>
+  <tbody>
+    <% @touken.touken_comments.each do |touken_comment| %>
+      <tr>
+        <td><p><%= touken_comment.user.name %>さん</p></td>
+        <td>コメント：<%= touken_comment.comment %></td>
+        <% if touken_comment.user == current_user %>
+          <td><%= link_to "コメント削除", touken_touken_comment_path(touken_comment.touken.id,touken_comment.id), method: :delete, remote: true %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
    </div>
-  </table>
+     <%= form_with model:[@touken, @touken_comment], local: false do |f| %>
+       <%= f.text_area :comment, :size => "70x4" %><br>
+       <%= f.submit "送信" %>
+     <% end %>
+     </div>
+    </div>
+  </div>
 </main>
