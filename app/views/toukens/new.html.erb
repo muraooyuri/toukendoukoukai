@@ -1,11 +1,8 @@
 <main>
   <div class= "container">
     <div class="row">
-      <div class= "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-        <div class= "col-md-3">
-          <%= render "layouts/sidebar" %>
-        </div>
-      <h1>新規投稿</h1>
+      <div class= "col-sm-12 col-md-8 col-lg-3 px-5 px-sm-0 mx-auto">
+       <h1>新規投稿</h1>
         <%= form_with model: @touken, multipart: true do |f|%>
          <div class="form-group">
             <label for="touken_title">題名</label><br>
@@ -20,7 +17,11 @@
             <%= f.file_field :image, accept: "image/*"  %>
          </div>
          <div class="form-group">
-            <%= f.submit'投稿する' %>
+            <label for="genre">ジャンル</label><br>
+            <%#= form.select :genre_id, options_from_collection_for(Genre.all, :id, :name), include_blank: true %>
+         </div>
+         <div class="form-group">
+            <%= f.submit'投稿する'%>
          </div>
         <% end %>
        </div>

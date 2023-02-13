@@ -1,6 +1,8 @@
 class ToukensController < ApplicationController
+  
   def new
    @touken= Touken.new
+   @genres = Genre.all
   end
 
   def create
@@ -20,6 +22,7 @@ class ToukensController < ApplicationController
     @toukens= Touken.all
     #@touken = Touken.new
     @user= current_user
+    @genres = Genre.all
   end
 
   def show
@@ -57,6 +60,6 @@ class ToukensController < ApplicationController
   private
 
   def touken_params
-    params.require(:touken).permit(:title, :body, :image)
+    params.require(:touken).permit(:title, :body, :image, :genre_id, :category_id)
   end
 end

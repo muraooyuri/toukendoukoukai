@@ -1,1 +1,4 @@
-sidebar
+<h5>ジャンル</h5>
+  <% @genres.each do |genre| %>
+    <%= link_to genre.name, genre_toukens_path(genre) %><br />
+  <% end %>

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @users = User.all
     @touken = Touken.new
     @user = current_user
+    @genres = Genre.all
   end
 
   def show

@@ -17,6 +17,8 @@
                 <%= @user.name%>
               <% end %>
              </td>
+             <td><%= @touken.id%></td>
+             <td><%= @touken.genre.name%></td>
              <td><%= @touken.title %></td>
              <td><%= @touken.body %></td>
              <td id="favorite_buttons_<%= @touken.id %>">

@@ -1,0 +1,5 @@
+<%= @genre.name %><br />
+<% @genre.toukens.each do |touken| %>
+  <%= link_to touken.title, touken_path(touken) %><br>
+  <%= paginate @toukens %>
+<% end %>
