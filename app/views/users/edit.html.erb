@@ -11,7 +11,7 @@
               <% end %>
             </ul>
           <% end %>
-    <h2>User info</h2>
+    <h2>ユーザー情報編集</h2>
         <%= form_with model: @user do |f| %>
          <div class="form-group">
           <%= f.label :name, 'ユーザー名' %>
@@ -29,10 +29,10 @@
           <small class="text-black-50">※ 変更する場合は、入力してください。</small><br>
           <small class="text-black-50">※ パスワードを変更すると一度ログアウトされます。</small>
          </div>
-
+           
          <div class="row">
           <div class="col-12 col-md-5 mx-auto">
-           <%= f.submit "更新する", class: 'btn btn-outline-secondary btn-block' %>
+           <%= f.submit "更新", class: 'btn btn-outline-secondary btn-block' %>
           </div>
          </div>
 

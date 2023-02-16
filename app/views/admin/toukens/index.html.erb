@@ -1,6 +1,19 @@
-<% @toukens.each do |touken| %>
-  <div>
-    <%= touken.title %>
-    <%= link_to 'Delete', admin_touken_path(touken), data: {confirm: '削除しますか？'}, method: :delete %>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-9 px-5 px-sm-0 mx-auto pt-4">
+        <h5>投稿管理</h5>
+        <% @toukens.each do |touken| %>
+          <div class="card mb-2">
+            <div class="card-body">
+              <%= touken.title %>
+            </div>
+            <div class="card-footer text-right">
+              <%= link_to '投稿を削除', admin_touken_path(touken), data: {confirm: '削除しますか？'}, method: :delete %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
+</main>

@@ -1,6 +1,19 @@
-<% @touken_comments.each do |touken_comment| %>
-  <div>
-    <%= touken_comment.comment %>
-    <%= link_to 'Delete', admin_touken_comment_path(touken_comment), data: {confirm: '削除しますか？'}, method: :delete %>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-9 px-5 px-sm-0 mx-auto pt-4">
+        <h5>コメント管理</h5>
+        <% @touken_comments.each do |touken_comment| %>
+          <div class="card mb-2">
+            <div class="card-body">
+              <%= touken_comment.comment %>
+            </div>
+            <div class="card-footer text-right">
+              <%= link_to 'コメント削除', admin_touken_comment_path(touken_comment), data: {confirm: '削除しますか？'}, method: :delete %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
+</main>

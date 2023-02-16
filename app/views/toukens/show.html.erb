@@ -8,7 +8,7 @@
        <%= render "layouts/sidebar" %>
      </div>
     <div class="col-md-10 mt-4">
-  <h2><%= @user.name %>さんの投稿詳細</h2>
+      <h2><%= @user.name %>さんの投稿詳細</h2>
       <table class= "table">
          <tbody>
            <tr>
@@ -45,27 +45,31 @@
            </tr>
          </tbody>
        </table>
-     <div class = "touken-comments-index">
-       <% @touken.touken_comments.each do |touken_comment| %>
-         <div class="card mb-2">
-           <div class="card-header">
-             <%= touken_comment.user.name %>さん
+       <div class = "touken-comments-index">
+         <% @touken.touken_comments.each do |touken_comment| %>
+           <div class="card mb-2">
+             <div class="card-header">
+               <%= touken_comment.user.name %>さん
+             </div>
+             <div class="card-body">
+               <%= simple_format(touken_comment.comment) %>
+             </div>
+             <div class="card-footer text-right">
+               <% if touken_comment.user == current_user %>
+                <%= link_to "コメント削除", touken_touken_comment_path(touken_comment.touken.id,touken_comment.id), method: :delete, remote: true %>
+               <% end %>
+             </div>
            </div>
-           <div class="card-body">
-             <%= simple_format(touken_comment.comment) %>
-           </div>
-           <div class="card-footer text-right">
-             <% if touken_comment.user == current_user %>
-               <%= link_to "コメント削除", touken_touken_comment_path(touken_comment.touken.id,touken_comment.id), method: :delete, remote: true %>
-             <% end %>
-           </div>
-         </div>
-       <% end %>
-   </div>
-     <%= form_with model:[@touken, @touken_comment], local: false do |f| %>
-       <%= f.text_area :comment, :size => "70x4" %><br>
-       <%= f.submit "送信" %>
-     <% end %>
+         <% end %>
+       </div>
+        <div class="row">
+          <div class="col-12 col-md-8 pt-4">
+           <%= form_with model:[@touken, @touken_comment], local: false do |f| %>
+             <%= f.text_area :comment, :size => "70x4", class: "form-control", placeholder:"コメントを記入して下さい"%><br>
+             <%= f.submit "送信", class: "btn btn-outline-secondary" %>
+           <% end %>
+          </div>
+        </div>
      </div>
     </div>
   </div>

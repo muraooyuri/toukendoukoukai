@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-3">
         <%= render "layouts/sidebar" %>
-       </div>
+      </div>
     <div class="col-md-9 pt-4">
       <h2>みんなの投稿</h2>
         <table class= "table table-hover table-inverse">
@@ -15,27 +15,27 @@
             <th colspan="4">画像</th>
           </tr>
          </thead>
-       <tbody>
-  <% @toukens.each do | touken | %>
-    <tr>
-      <th>
-        <%= touken.genre.name %>
-      </th>
-        <th><%= link_to touken_path(touken) do %><%= touken.title %><% end %></th>
-         <th><%= touken.body %></th>
-          <th>
-            <% if touken.image.attached? %>
-             <%= image_tag touken.image.variant(resize: '200x200') %>
-            <% end %>
-          </th>
-         <td id="favorite_buttons_<%= touken.id %>">
-           <%= render "favorites/favorite", touken: touken %>
-        </td>
-      <th><%= link_to "#{touken.touken_comments.count} コメント", touken_path(touken.id) %></th>
-    </tr>
-  <% end %>
-     </tbody>
-      </table>
+         <tbody>
+          <% @toukens.each do | touken | %>
+            <tr>
+              <th>
+                <%= touken.genre.name %>
+              </th>
+              <th><%= link_to touken_path(touken) do %><%= touken.title %><% end %></th>
+              <th><%= touken.body %></th>
+              <th>
+                <% if touken.image.attached? %>
+                  <%= image_tag touken.image.variant(resize: '200x200') %>
+                <% end %>
+              </th>
+               <td id="favorite_buttons_<%= touken.id %>">
+                 <%= render "favorites/favorite", touken: touken %>
+               </td>
+              <th><%= link_to "#{touken.touken_comments.count} コメント", touken_path(touken.id) %></th>
+            </tr>
+          <% end %>
+         </tbody>
+        </table>
       </div>
     </div>
   </div>
