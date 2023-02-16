@@ -1,37 +1,38 @@
 class ToukensController < ApplicationController
-  
+  before_action :check_guest_user, only: [:new, :create, :edit, :update, :destroy]
+
   def new
-   @touken= Touken.new
-   @genres = Genre.all
+    @touken= Touken.new
+    @genres = Genre.all
   end
 
   def create
-    @touken= Touken.new(touken_params)
+    @touken = Touken.new(touken_params)
     @touken.user_id= current_user.id
-    if @touken.save
-      flash[:notice]= "投稿が完了しました"
+    @genres = Genre.all
+    if @touken.save!
+      flash[:notice] = "投稿が完了しました"
       redirect_to toukens_path(@touken)
     else
-      @toukens= Touken.all
-      @user= current_user
+      @toukens = Touken.all
+      @user = current_user
       render :index
     end
   end
 
   def index
-    @toukens= Touken.all
-    #@touken = Touken.new
-    @user= current_user
-    @genres = Genre.all
+      @toukens = Touken.search(params[:keyword])
+      @user = current_user
+      @genres = Genre.all
   end
 
   def show
-    #@toukens = Touken.all
-    @touken= Touken.find(params[:id])
+    @touken = Touken.find(params[:id])
     @touken_comment = ToukenComment.new
     @touken_comments = @touken.id
     @touken_new= Touken.new
     @user= @touken.user
+    @genres = Genre.all
   end
 
   def edit
@@ -46,7 +47,7 @@ class ToukensController < ApplicationController
     @touken.destroy
     redirect_to '/toukens'
   end
-  
+
   def update
     @touken = Touken.find(params[:id])
     if @touken.update(touken_params)
@@ -60,6 +61,10 @@ class ToukensController < ApplicationController
   private
 
   def touken_params
-    params.require(:touken).permit(:title, :body, :image, :genre_id, :category_id)
+    params.require(:touken).permit(:title, :body, :image, :genre_id)
+  end
+
+  def check_guest_user
+    redirect_to root_path, notice: 'ゲストユーザーは見ることができません。' if current_user.email == 'guest@example.com'
   end
 end

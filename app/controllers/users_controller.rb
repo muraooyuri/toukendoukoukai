@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_guest_user, only: [:edit, :update]
 
   def index
     @users = User.all
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @touken = Touken.new
     @toukens= @user.toukens
+    @genres = Genre.all
   end
 
   def edit
@@ -19,10 +21,39 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
- 
+
+  def update
+    @user = User.find(params[:id])
+
+    # パスワード入力欄にパスワードが入っていなければ…
+    if params[:user][:password].blank?
+      # プロフィール編集のみ
+      if @user.update(user_params)
+        redirect_to edit_user_path(current_user), notice: 'プロフィールの更新に成功しました。'
+      else
+        render :edit
+      end
+    else
+      # パスワード変更を含む
+      if @user.update(user_with_password_params)
+        redirect_to root_path, notice: 'パスワードが変更されたのでログアウトしました。'
+      else
+        render :edit
+      end
+    end
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :introduction)
+  end
+
+  def user_with_password_params
+    params.require(:user).permit(:name, :introduction, :password)
+  end
+
+  def check_guest_user
+    redirect_to root_path, notice: 'ゲストユーザーは見ることができません。' if current_user.email == 'guest@example.com'
   end
 end

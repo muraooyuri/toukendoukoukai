@@ -9,4 +9,12 @@ class Touken < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+  
+  def self.search(keyword)
+    if keyword.present?
+      where('title LIKE ?', "#{keyword}%")
+    else
+      all
+    end
+  end
 end

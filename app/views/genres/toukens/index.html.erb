@@ -1,5 +1,58 @@
-<%= @genre.name %><br />
-<% @genre.toukens.each do |touken| %>
-  <%= link_to touken.title, touken_path(touken) %><br>
-  <%= paginate @toukens %>
-<% end %>
+<!--<main>-->
+<!--  <div class= "container px-5 mt-4">-->
+<!--    <div class= "row">-->
+<!--      <div class= "col-md-11">-->
+<!--    <h3><%= @genre.name %>の投稿一覧</h3><br/>-->
+<!--      <table class="table">-->
+<!--        <thead>-->
+<!--          <tr>-->
+<!--            <th>題名</th>-->
+<!--            <th>内容</th>-->
+<!--            <th>画像</th>-->
+<!--          </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--          <% @genre.toukens.each do |touken| %>-->
+            <%#= link_to touken.title, touken_path(touken) %><br>
+            <%#= paginate @toukens %>
+<!--            <td><%= touken.title %></td>-->
+<!--            <td><%= touken.body %></td>-->
+<!--            <td>-->
+<!--              <% if touken.image.attached? %>-->
+<!--                <%= image_tag touken.image %>-->
+<!--              <% else %>-->
+<!--                <%= image_tag 'no_image.jpg' %>-->
+<!--              <% end %>-->
+<!--            </td>-->
+<!--          <% end %>-->
+<!--        </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</main>-->
+
+<div class="container mt-4">
+  <h3><%= @genre.name %>の投稿一覧</h3>
+  <div class="row">
+    <% @genre.toukens.each do |touken| %>
+      <div class="col-md-3">
+        <div class="card">
+          <% if touken.image.attached? %>
+            <%= image_tag touken.image, class: 'card-img-top genre-card-image' %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', class: 'card-img-top genre-card-image' %>
+          <% end %>
+          <div class="card-body">
+            <h6 class="card-title">
+              <%= link_to touken.title, touken_path(touken) %>
+            </h6>
+            <div class="card-text">
+              <%= simple_format(touken.body) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

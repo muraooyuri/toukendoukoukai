@@ -1,1 +1,8 @@
+$enable-rounded: false;
 @import '~bootstrap/scss/bootstrap';
+
+.genre-card-image {
+  width: 100%;
+  height: 100px; // 画像の高さを変更するときはココ！
+  object-fit: cover;
+}

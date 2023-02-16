@@ -2,9 +2,6 @@
  <p id= "notice"></p>
    <div class="container">
      <div class="row">
-      <div>
-        <%= flash[:notice] %>
-       </div>
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
           <% if @user.errors.any? %>
             <%= @user.errors.count %>errors prohibited this obj from being saved:
@@ -16,11 +13,29 @@
           <% end %>
     <h2>User info</h2>
         <%= form_with model: @user do |f| %>
-          <label for="userName">ユーザ名</label><br>
-           <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"ユーザー名を入力" %><br>
-          <label for="userBody">自己紹介</label><br>
-           <%= f.text_area :introduction %><br>
-         <%= f.submit "更新する" %>
+         <div class="form-group">
+          <%= f.label :name, 'ユーザー名' %>
+          <%= f.text_field :name, autofocus: true, placeholder:"ユーザー名を入力", class: 'form-control' %>
+         </div>
+         <div class="form-group">
+          <%= f.label :introduction, '自己紹介' %>
+          <%= f.text_area :introduction, rows: 3, class: 'form-control' %>
+         </div>
+
+         <h3>パスワード変更</h3>
+         <div class="form-group">
+          <%= f.label :password, 'パスワード' %>
+          <%= f.password_field :password, rows: 3, class: 'form-control' %>
+          <small class="text-black-50">※ 変更する場合は、入力してください。</small><br>
+          <small class="text-black-50">※ パスワードを変更すると一度ログアウトされます。</small>
+         </div>
+
+         <div class="row">
+          <div class="col-12 col-md-5 mx-auto">
+           <%= f.submit "更新する", class: 'btn btn-outline-secondary btn-block' %>
+          </div>
+         </div>
+
         <% end %>
        </div>
      </div>

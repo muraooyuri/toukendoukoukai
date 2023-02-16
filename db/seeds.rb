@@ -32,6 +32,10 @@
 ].each { |name| Genre.find_or_create_by(name:) }
 genre_ids = Genre.all.pluck(:id)
 
+Admin.create!(
+  email: 'touken@doucoukai.com',
+  password: 'touken112'
+)
 #touken_attributes.each do |touken_attribute|
   #Touken.find_or_create_by(
     #title: touken_attribute[:title],

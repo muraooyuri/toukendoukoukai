@@ -1,4 +1,8 @@
+<%= form_with url: toukens_path, local: true, method: :get do |form| %>
+  <%= form.text_field :keyword %>
+  <%= form.submit '検索' %>
+<% end %>
 <h5>ジャンル</h5>
   <% @genres.each do |genre| %>
-    <%= link_to genre.name, genre_toukens_path(genre) %><br />
+    <%= link_to genre.name, genre_toukens_path(genre) %><br>
   <% end %>
