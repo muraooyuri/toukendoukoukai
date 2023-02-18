@@ -1,5 +1,5 @@
 <main>
-  <div class= "container px-5 px-sm-0">
+  <div class="container px-5 px-sm-0">
       <div>
         <%= flash[:notice] %>
       </div>
@@ -9,7 +9,7 @@
      </div>
     <div class="col-md-10 mt-4">
       <h2><%= @user.name %>さんの投稿詳細</h2>
-      <table class= "table">
+      <table class="table">
          <tbody>
            <tr>
               <th>名前</th>
@@ -45,7 +45,7 @@
            </tr>
          </tbody>
        </table>
-       <div class = "touken-comments-index">
+       <div class="touken-comments-index">
          <% @touken.touken_comments.each do |touken_comment| %>
            <div class="card mb-2">
              <div class="card-header">
