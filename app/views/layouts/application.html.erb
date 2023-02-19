@@ -13,7 +13,7 @@
   <body>
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        
+
         <%= link_to "/" do %>
           <%= image_tag "刀剣 (2).png", class: "touken" %>
         <% end %>
@@ -24,6 +24,9 @@
           <ul class="navbar-nav ml-auto">
            <% if user_signed_in? %>
             <li class="nav-item">
+              <%= link_to "ユーザー詳細", user_path(current_user), class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
               <%= link_to "新規投稿", new_touken_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
@@ -33,7 +36,7 @@
               <%= link_to "情報一覧", toukens_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= link_to "投稿者一覧", users_path, class: 'nav-link' %>
+              <%= link_to "投稿者一覧", users_toukens_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
               <%= link_to "プロフィール編集", edit_user_path(current_user), class: 'nav-link' %>
@@ -53,13 +56,14 @@
         </div>
       </div>
     </nav>
-    
-    <% if flash[:notice] %>
-       <div>
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
 
+    <!--<%# if flash[:notice] %>-->
+    <!--   <div>-->
+    <!--    <%#= flash[:notice] %>-->
+    <!--  </div>-->
+    <!--<%# end %>-->
+    <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
   <%= yield %>
     <footer>
       <div class="container mt-5">

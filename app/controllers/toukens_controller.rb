@@ -1,37 +1,40 @@
 class ToukensController < ApplicationController
+  #新規登録orログインしていないユーザーに観覧等制限をかける
+  before_action :authenticate_user!
+
   before_action :check_guest_user, only: [:new, :create, :edit, :update, :destroy]
 
   def new
-    @touken= Touken.new
+    @touken = Touken.new
     @genres = Genre.all
   end
 
   def create
     @touken = Touken.new(touken_params)
-    @touken.user_id= current_user.id
+    @touken.user_id = current_user.id
     @genres = Genre.all
-    if @touken.save!
+    if @touken.save
       flash[:notice] = "投稿が完了しました"
       redirect_to toukens_path(@touken)
     else
       @toukens = Touken.all
       @user = current_user
-      render :index
+      render :new
     end
   end
 
   def index
-      @toukens = Touken.search(params[:keyword])
-      @user = current_user
-      @genres = Genre.all
+    @toukens = Touken.search(params[:keyword])
+    @user = current_user
+    @genres = Genre.all
   end
 
   def show
     @touken = Touken.find(params[:id])
     @touken_comment = ToukenComment.new
     @touken_comments = @touken.id
-    @touken_new= Touken.new
-    @user= @touken.user
+    @touken_new = Touken.new
+    @user = @touken.user
     @genres = Genre.all
   end
 

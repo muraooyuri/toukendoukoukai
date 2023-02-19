@@ -16,6 +16,8 @@
            </thead>
           <tbody>
             <% @users.each do | user | %>
+              <% if user.toukens.present? %>
+              <!--もしユーザーの投稿が存在するなら表示させる-->
               <tr>
                <td><%= user.name %></td>
                <td>
@@ -24,6 +26,7 @@
                   <%end%>
                 </td>
               </tr>
+              <% end %>
             <% end %>
           </tbody>
         </table>

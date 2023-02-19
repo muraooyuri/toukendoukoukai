@@ -10,6 +10,9 @@ class Touken < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
   
+  validates :title, presence: true, length:{maximum: 50}
+  validates :body, presence: true, length:{maximum: 200}
+  
   def self.search(keyword)
     if keyword.present?
       where('title LIKE ?', "#{keyword}%")

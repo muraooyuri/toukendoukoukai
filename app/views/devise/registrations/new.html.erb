@@ -3,15 +3,15 @@
     <div class="row">
       <div class="col-sm-12 col-md-8 col-lg-4 px-6 px-sm-2 mx-auto pt-5">
       <h2>新規登録</h2>
-    
+
         <%= form_with model: @user, url: user_registration_path do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
-          
+
           <div class="field">
             <%= f.label :name, '氏名' %><br>
             <%= f.text_field :name, class: 'form-control' %>
           </div>
-          
+
           <div class="field">
             <%= f.label :email, 'メールアドレス' %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
