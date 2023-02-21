@@ -12,15 +12,27 @@
          <% end %>
      <h2>投稿編集ページ</h2>
           <%= form_with model: @touken do |f| %>
+           <div class="form-group">
             <label for="toukenTitle">題名</label><br>
-             <%= f.text_field :title, autofocus: true, id:"touken_title"%><br>
+             <%= f.text_field :title, autofocus: true, id:"touken_title", class: 'form-control' %><br>
+           </div>
+           <div class="form-group">
             <label for="toukenBody">投稿内容</label><br>
-             <%= f.text_area :body %><br>
-            <%= f.submit "投稿を編集" %>
+             <%= f.text_area :body, class: 'form-control' %><br>
+           </div>
+           <div class="row">
+             <div class="col-12 col-md-5 mx-auto">
+              <%= f.submit "投稿を編集", class: 'btn btn-outline-secondary btn-block' %>
+             </div>
+           </div>
           <% end %>
-        <%= link_to "刀剣詳細" ,touken_path(@touken) %>
-           |
-        <%= link_to "戻る" ,toukens_path %>
+         <div class="row">
+          <div class="col-12 col-md-4 mx-auto">
+            <%= link_to "刀剣詳細" ,touken_path(@touken) %>
+               |
+            <%= link_to "戻る" ,toukens_path %>
+          </div>
+         </div>
        </div>
      </div>
    </div>

@@ -1,5 +1,5 @@
 class ToukensController < ApplicationController
-  #新規登録orログインしていないユーザーに観覧等制限をかける
+  #新規登録orログインしていないユーザーに観覧等の制限をかける
   before_action :authenticate_user!
 
   before_action :check_guest_user, only: [:new, :create, :edit, :update, :destroy]

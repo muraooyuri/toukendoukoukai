@@ -11,8 +11,25 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application" 
+import "../stylesheets/application"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(document).on('turbolinks:load', function() {
+  $(function () {
+    $(".page-top").click(function () {
+      $('html, body').animate({
+        scrollTop: 0
+      }, 300);
+    });
+    $(window).scroll(function () {
+      if ($(window).scrollTop() > 1) {
+        $('.page-top').fadeIn(300).css('display', 'flex')
+      } else {
+        $('.page-top').fadeOut(300)
+      }
+    });
+  });
+});

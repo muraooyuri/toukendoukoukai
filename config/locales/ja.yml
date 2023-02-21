@@ -5,13 +5,15 @@ ja:
       touken: "刀剣"
       user: "ユーザー"
     attributes:
-      # モデル毎の属性名
+      #ここから モデル毎の属性名
       touken:
         title: "題名"
         body: "投稿内容"
+        genre: "ジャンル"
       user:
         email: "メールアドレス"
         name: "名前"
+      #ここまで　モデル毎の属性名  
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

@@ -1,38 +1,100 @@
 $enable-rounded: false;
 @import '~bootstrap/scss/bootstrap';
-
-.container { 
-    padding-right: 15px; 
-    padding-left: 15px; 
-    margin-right: auto; 
-    margin-left: auto; 
-} 
-
-@media (min-width: 768px) { 
-  .container { 
-    width: 750px; 
-  } 
-} 
-
-@media (min-width: 992px) { 
-  .container { 
-    width: 970px; 
-  } 
-} 
-
-@media (min-width: 1200px) { 
-  .container { 
-    width: 1170px; 
-  } 
+//ここから 各端末に対応する画面幅を変える記述
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+//ここまで 各端末に対応する画面幅を変える記述
+
+//カード型表示のレイアウト
 .genre-card-image {
   width: 100%;
   height: 100px; // 画像の高さを変更するときはココ！
   object-fit: cover;
 }
-
+//ヘッダーのアイコンサイズ
 .touken {
+  width: 80px;
+  height: 80px;
+}
+
+// .hd-color {
+//   height: 250px;
+//   padding:  20px;
+//   font-size: 20px;
+//   background-color: powderblue;
+// }
+
+body {
+  /* 画像ファイルの指定 */
+  background-image: url("../images/wallpaper-katana-tn.jpg");
+
+  /* 画像を常に天地左右の中央に配置 */
+  background-position: center center;
+
+  /* 画像をタイル状に繰り返し表示しない */
+  background-repeat: no-repeat;
+
+  /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+  background-attachment: fixed;
+
+  /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+  background-size: cover;
+
+  /* 背景画像が読み込まれる前に表示される背景のカラー */
+  background-color: rgba(0, 0, 0, .6);
+
+  /* 背景色とのブレンド */
+  background-blend-mode: darken;
+
+  /* ページ全体のフォントカラー */
+  color: #fff;
+}
+
+.table {
+  color: #fff !important;
+}
+
+/* Bootstrapの.table-hoverのオーバーライド */
+.table-hover {
+  tbody tr {
+    @include hover() {
+      color: #fff !important;
+      background-color: #000 !important;
+    }
+  }
+}
+
+/* ページトップへ戻るボタン */
+.page-top {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+.page-top img {
   width: 80px;
   height: 80px;
 }
