@@ -15,7 +15,7 @@ class Touken < ApplicationRecord
   
   def self.search(keyword)
     if keyword.present?
-      where('title LIKE ?', "#{keyword}%")
+      joins(:genre).where('genres.name LIKE ? or title LIKE ?', "#{keyword}%", "#{keyword}%")
     else
       all
     end

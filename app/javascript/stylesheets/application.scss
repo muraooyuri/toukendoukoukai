@@ -39,12 +39,11 @@ $enable-rounded: false;
   height: 80px;
 }
 
-// .hd-color {
-//   height: 250px;
-//   padding:  20px;
-//   font-size: 20px;
-//   background-color: powderblue;
-// }
+.box1 {
+  background: linear-gradient(#0000CC, #000000);
+  background: -moz-linear-gradient(#0000EE, #000000);
+  background: -webkit-linear-gradient(#000099, #000000);
+}
 
 body {
   /* 画像ファイルの指定 */
@@ -79,6 +78,7 @@ body {
 /* Bootstrapの.table-hoverのオーバーライド */
 .table-hover {
   tbody tr {
+    /*優先して下さいの意*/
     @include hover() {
       color: #fff !important;
       background-color: #000 !important;
@@ -90,11 +90,26 @@ body {
 .page-top {
   display: none;
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  bottom: 20px;
+  right: 20px;
 }
 
 .page-top img {
   width: 80px;
   height: 80px;
+}
+
+.sbox2{
+  height:50px;
+  padding:0 10px; 
+  position:absolute; 
+  left:0;
+  top:0; 
+  border-radius:2px;
+  outline:0;
+  background:#eee;	
+}
+
+.side-genre {
+  font-family: 'Hiragino Mincho ProN' !important;
 }

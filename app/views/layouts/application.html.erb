@@ -11,9 +11,10 @@
        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
    </head>
   <body>
-   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000;">
+  <!--ヘッダーの色指定:カラー指定は【application.scss】ファイル-->
+  <div class="box1">
+   <nav class="navbar navbar-expand-lg navbar-dark">
      <div class="container">
-       <!--<div class="hd-color">-->
         <%= link_to root_path do %>
           <%= image_tag "logo.png", class: "touken" %>
         <% end %>
@@ -24,7 +25,7 @@
           <ul class="navbar-nav ml-auto">
            <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "ユーザー詳細", user_path(current_user), class: 'nav-link' %>
+              <%= link_to "ユーザーホーム", user_path(current_user), class: 'nav-link' %>
             </li>
             <li class="nav-item">
               <%= link_to "新規投稿", new_touken_path, class: 'nav-link' %>
@@ -53,30 +54,24 @@
             </li>
            <% end %>
           </ul>
-        <!--</div>-->
        </div>
      </div>
    </nav>
-
-    <!--<%# if flash[:notice] %>-->
-    <!--   <div>-->
-    <!--    <%#= flash[:notice] %>-->
-    <!--  </div>-->
-    <!--<%# end %>-->
+  </div>
     <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
-    <footer>
-      <div class="container mt-5">
-       <div class="row">
-        <div class="mx-auto">
-        <p>刀剣同好会</p>
-        </div>
-       </div>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+        <footer>
+          <div class="container mt-5">
+           <div class="row">
+             <div class="mx-auto">
+              <p>刀剣同好会</p>
+             </div>
+           </div>
+          </div>
+        </footer>
+      <div class="page-top">
+        <%= image_tag 'logo.png'%>
       </div>
-    </footer>
-    <div class="page-top">
-        <%= image_tag 'logo.png' %>
-    </div>
   </body>
 </html>

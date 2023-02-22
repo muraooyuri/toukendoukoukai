@@ -13,7 +13,7 @@ ja:
       user:
         email: "メールアドレス"
         name: "名前"
-      #ここまで　モデル毎の属性名  
+      #ここまで　モデル毎の属性名
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
