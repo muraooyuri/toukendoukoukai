@@ -16,4 +16,12 @@ class User < ApplicationRecord
       user.name = "guestuser"
     end
   end
+  
+  def self.search(keyword)
+    if keyword.present?
+      joins(:genre).where('users.name LIKE ?' , "#{keyword}%")
+    else
+      all
+    end
+  end
 end

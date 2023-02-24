@@ -9,6 +9,7 @@
         <table class= "table table-hover table-inverse">
          <thead>
           <tr>
+            <th>ユーザー名</th>
             <th>ジャンル</th>
             <th>題名</th>
             <th>内容</th>
@@ -18,6 +19,9 @@
          <tbody>
           <% @toukens.each do | touken | %>
             <tr>
+              <th>
+                <%= touken.user.name %>
+              </th>
               <th>
                 <%= touken.genre.name %>
               </th>

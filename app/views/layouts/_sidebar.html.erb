@@ -2,7 +2,7 @@
   <div>
     <div class="pt-2">
     <%= form_with url: toukens_path, :id => "form", local: true, method: :get do |form| %>
-      <%= form.text_field :keyword, :placeholder => "free word ", class: 'sbox' %>
+      <%= form.text_field :keyword, :placeholder => "入力して下さい ", class: 'sbox' %>
       <%= form.submit '検索', class: 'side-btn' %>
     <% end %>
     </div>
