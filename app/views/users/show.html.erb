@@ -1,9 +1,11 @@
 <main>
     <div class="container px-5 px-sm-0">
      <div class="row">
+        <!--スマホ画面: col-12　タブレット画面: col-md-4　パソコン画面: col-lg-3-->
         <div class="col-12 col-md-4 col-lg-3">
           <%= render "layouts/sidebar" %>
         </div>
+      <!--スマホ画面: col-12　タブレット画面: col-md-8　パソコン画面: col-lg-9-->
       <div class="col-12 col-md-8 col-lg-9">
         <h2><%= @user.name %>さんの投稿一覧</h2>
         <div class="row text-dark">
@@ -18,6 +20,7 @@
                     <% end %>
                   </h5>
                   <p class="card-text">
+                    <!--文字列を切り捨てる: truncate(20)-->
                     <%= touken.body.truncate(20) %>
                   </p>
                 </div>
