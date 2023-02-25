@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
-  
+  #新規登録orログインしていないユーザーに観覧等の制限をかける
+  before_action :authenticate_user!
+
   def create
     @touken = Touken.find(params[:touken_id])
     favorite = current_user.favorites.new(touken_id: @touken.id)

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  #新規登録orログインしていないユーザーに観覧等の制限をかける
+  before_action :authenticate_user!
   before_action :check_guest_user, only: [:edit, :update]
 
   def index

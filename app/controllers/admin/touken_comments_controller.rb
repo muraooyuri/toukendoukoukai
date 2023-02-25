@@ -1,4 +1,5 @@
 class Admin::ToukenCommentsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @touken_comments = ToukenComment.all

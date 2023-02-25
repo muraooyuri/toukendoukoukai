@@ -1,5 +1,7 @@
 class ToukenCommentsController < ApplicationController
-  
+  #新規登録orログインしていないユーザーに観覧等の制限をかける
+  before_action :authenticate_user!
+
   def create
     @touken = Touken.find(params[:touken_id])
     touken_comments = current_user.touken_comments.new(touken_comment_params)

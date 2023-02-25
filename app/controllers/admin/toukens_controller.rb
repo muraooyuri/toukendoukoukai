@@ -1,4 +1,5 @@
 class Admin::ToukensController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @toukens = Touken.all
