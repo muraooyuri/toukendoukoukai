@@ -1,5 +1,6 @@
 <main>
   <div class="container">
+    <%= link_to 'コメント管理', admin_touken_comments_path %> | <%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete %>
     <div class="row">
       <div class="col-sm-12 col-md-9 px-5 px-sm-0 mx-auto pt-4">
         <h5>投稿管理</h5>
@@ -7,6 +8,8 @@
           <div class="card mb-2">
             <div class="card-body" style="color:black">
               <%= touken.title %>
+              <hr>
+              <%= simple_format(touken.body) %>
             </div>
             <div class="card-footer text-right">
               <%= link_to '投稿を削除', admin_touken_path(touken), data: {confirm: '削除しますか？'}, method: :delete %>
