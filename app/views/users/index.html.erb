@@ -1,35 +1,25 @@
 <main>
   <div class="container px-5 px-sm-0">
     <div class="row">
-       <div class="col-md-3">
+       <div class="col-12 col-md-4 col-lg-3">
          <%= render "layouts/sidebar" %>
        </div>
-      <div class="col-md-9 pt-4">
-      <h2>投稿者一覧</h2>
-        <table class="table table-hover table-inverse">
-           <thead>
-             <tr>
-              <th>投稿ユーザー</th>
-              <th>タイトル</th>
-              <th colspan="4"></th>
-             </tr>
-           </thead>
-          <tbody>
-            <% @users.each do | user | %>
-              <% if user.toukens.present? %>
-              <!--もしユーザーの投稿が存在するなら表示させる-->
-              <tr>
-               <td><%= user.name %></td>
-               <td>
-                  <% user.toukens.each do |touken| %>
-                   <%= touken.title %>
-                  <%end%>
-                </td>
-              </tr>
-              <% end %>
+      <div class="col-12 col-md-8 col-lg-9 pt-4">
+        <h2>投稿者情報</h2>
+          <% @users.each do | user | %>
+            <% if user.introduction.present? %>
+              <div class="card mb-2 text-dark">
+                  <div class="card-header">
+                    <h6 class="small text-secondary">名前</h6>
+                    <%= user.name %>
+                  </div>
+                  <div class="card-body">
+                    <h6 class="small text-secondary">自己紹介</h6>
+                    <%= user.introduction %>
+                  </div>
+              </div>
             <% end %>
-          </tbody>
-        </table>
+          <% end %>
       </div>
     </div>
   </div>

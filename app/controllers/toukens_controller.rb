@@ -24,6 +24,9 @@ class ToukensController < ApplicationController
   end
 
   def index
+    if params[:range] == "User"
+      redirect_to users_toukens_path(keyword: params[:keyword])
+    end
     @toukens = Touken.search(params[:keyword])
     @user = current_user
     @genres = Genre.all

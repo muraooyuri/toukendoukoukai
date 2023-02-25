@@ -2,7 +2,10 @@ class UsersController < ApplicationController
   before_action :check_guest_user, only: [:edit, :update]
 
   def index
-    @users = User.all
+    if params[:range] == "Touken"
+      redirect_to toukens_path(keyword: params[:keyword])
+    end
+    @users = User.search(params[:keyword])
     @touken = Touken.new
     @user = current_user
     @genres = Genre.all

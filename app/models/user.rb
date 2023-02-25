@@ -9,17 +9,17 @@ class User < ApplicationRecord
   has_many :touken_comments, dependent: :destroy
   validates :name, presence: true, uniqueness: true, length:{minimum: 2, maximum: 20}
   validates :introduction, length:{maximum: 50}
-  
+
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
     end
   end
-  
+
   def self.search(keyword)
     if keyword.present?
-      joins(:genre).where('users.name LIKE ?' , "#{keyword}%")
+      where('name LIKE ?' , "#{keyword}%")
     else
       all
     end
