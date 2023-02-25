@@ -1,21 +1,27 @@
 <main>
   <div class="container mt-4">
     <h3><%= @genre.name %>の投稿一覧</h3>
-    <div class="row">
+    <div class="row text-dark">
       <% @genre.toukens.each do |touken| %>
         <div class="col-md-3">
           <div class="card">
             <% if touken.image.attached? %>
-              <%= image_tag touken.image, class: 'card-img-top genre-card-image' %>
+              <%= image_tag touken.image, class: 'card-img-top' %>
             <% else %>
-              <%= image_tag 'no_image.jpg', class: 'card-img-top genre-card-image' %>
+              <%= image_tag 'no_image.jpg', class: 'card-img-top' %>
             <% end %>
             <div class="card-body">
-              <h6 class="card-title">
-                <%= link_to touken.title, touken_path(touken) %>
-              </h6>
+              <h6 class="small text-secondary">題名</h6>
+                <h5 class="card-title">
+                  <%= link_to touken_path(touken) do %>
+                    <%= touken.title %>
+                  <% end %>
+                </h5>
               <div class="card-text">
-                <%= simple_format(touken.body) %>
+                <h6 class="small text-secondary">内容</h6>
+                <div>
+                  <%= touken.body.truncate(20) %>
+                </div>
               </div>
             </div>
           </div>

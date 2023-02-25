@@ -14,10 +14,13 @@
                   <%= image_tag touken.image.variant(resize: '200x200') %>
                   <div class="card-body">
                     <h6 class="small text-secondary">題名</h6>
-                      <h5 class="card-title"><%= link_to touken_path(touken) do %><%= touken.title %><% end %></h5>
+                      <h5 class="card-title">
+                        <%= link_to touken_path(touken) do %>
+                          <%= touken.title %>
+                        <% end %>
+                      </h5>
                     <div class="card-text">
                       <h6 class="small text-secondary">内容</h6>
-                        <!--長文の投稿をした時にインデントが崩れない様にする記述-->
                       <%= touken.body.truncate(20) %>
                     </div>
                   </div>
