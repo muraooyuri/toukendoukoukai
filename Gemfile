@@ -60,6 +60,7 @@ group :production do
   gem 'mysql2'
 end
 
+# ターミナル上でインストールを実行するする前に必ず記述
 gem 'devise'
 
 gem 'kaminari'
