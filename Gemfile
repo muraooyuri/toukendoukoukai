@@ -64,7 +64,9 @@ gem 'devise'
 
 gem 'kaminari'
 
+# バリデーションを日本語に変更する記述
 gem 'rails-i18n'
+# deviseが入っている場合に必要になる記述
 gem 'devise-i18n'
 
 gem "net-smtp"
