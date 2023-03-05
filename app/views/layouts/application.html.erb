@@ -15,13 +15,19 @@
   <div class="box1">
    <nav class="navbar navbar-expand-lg navbar-dark">
      <div class="container">
+       <!--アイコンをクリックした時のリンク先-->
         <%= link_to root_path do %>
+          <!--アイコンの画像データ-->
           <%= image_tag "logo.png", class: "touken" %>
         <% end %>
+        <!--ここから　レスポンシブル対応の時に表示される3本線のアイコン-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        <!--ここまで　レスポンシブル対応の時に表示される3本線のアイコン--> 
+        <!--メニュークリックで、メニュー(３本線)を閉じる記述-->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!--メニュー欄を右寄せに記述-->
           <ul class="navbar-nav ml-auto">
            <% if user_signed_in? %>
             <li class="nav-item">
