@@ -1,5 +1,5 @@
 class ToukenCommentsController < ApplicationController
-  #新規登録orログインしていないユーザーに観覧等の制限をかける(この記述はとても重要、必ず記述する様にする)
+  # 【ログイン済】のユーザーのみにアクセスを許可する(この記述はとても重要、必ず記述する様にする)
   before_action :authenticate_user!
 
   def create

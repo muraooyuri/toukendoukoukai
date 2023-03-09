@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  # 新規登録orログインしていないユーザーに観覧等の制限をかける(この記述はとても重要、必ず記述する様にする)
+  # 【ログイン済】のユーザーのみにアクセスを許可する(この記述はとても重要、必ず記述する様にする)
   before_action :authenticate_user!
-  # ゲストログイン状態の場合、編集ページに飛べない様にまた更新出来ない様にする記述
+  # ゲストログイン、またゲストは編集ページに飛べない様に更新出来ない様にする
   before_action :check_guest_user, only: [:edit, :update]
 
   def index

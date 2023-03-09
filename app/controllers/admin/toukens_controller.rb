@@ -1,4 +1,5 @@
 class Admin::ToukensController < ApplicationController
+  # ログイン済の【管理者】のみにアクセスを許可する
   before_action :authenticate_admin!
 
   def index
@@ -6,6 +7,7 @@ class Admin::ToukensController < ApplicationController
   end
 
   def destroy
+    # 不適切な【投稿内容】を削除
     @touken = Touken.find(params[:id])
     @touken.destroy
     redirect_to '/admin/toukens'

@@ -1,5 +1,5 @@
 class ToukensController < ApplicationController
-  # 新規登録orログインしていないユーザーに観覧等の制限をかける(この記述はとても重要、必ず記述する様にする)
+  # 【ログイン済】のユーザーのみにアクセスを許可する(この記述はとても重要、必ず記述する様にする)
   before_action :authenticate_user!
   # ゲストログイン状態の場合、【新規投稿・編集ページ・投稿の更新、投稿の削除】が出来ない様にする記述
   before_action :check_guest_user, only: [:new, :create, :edit, :update, :destroy]

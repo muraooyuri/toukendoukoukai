@@ -16,9 +16,8 @@ class Touken < ApplicationRecord
   #検索ワード機能の記述
   def self.search(keyword)
     if keyword.present?
-                          # ('title LIKE ?', "#{keyword}%")とワンセットで記述
+      # ('title LIKE ?', "#{keyword}%")とワンセットで記述：LIKE部分は小文字でもOK
       joins(:genre).where('title LIKE ? or body LIKE ?', "#{keyword}%", "#{keyword}%")
-                              # LIKE部分は小文字でもOK
     else
       all
     end
