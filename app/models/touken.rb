@@ -13,9 +13,12 @@ class Touken < ApplicationRecord
   validates :title, presence: true, length:{maximum: 50}
   validates :body, presence: true, length:{maximum: 200}
   
+  #検索ワード機能の記述
   def self.search(keyword)
     if keyword.present?
+                          # ('title LIKE ?', "#{keyword}%")とワンセットで記述
       joins(:genre).where('title LIKE ? or body LIKE ?', "#{keyword}%", "#{keyword}%")
+                              # LIKE部分は小文字でもOK
     else
       all
     end
