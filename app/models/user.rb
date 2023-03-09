@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true, length:{minimum: 2, maximum: 20}
   validates :introduction, length:{maximum: 50}
 
+  # ゲストログインの記述
   def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -19,7 +20,9 @@ class User < ApplicationRecord
 
   def self.search(keyword)
     if keyword.present?
+          # ('name LIKE ?', "#{keyword}%")とワンセットで記述
       where('name LIKE ?' , "#{keyword}%")
+                # LIKE部分は小文字でもOK
     else
       all
     end

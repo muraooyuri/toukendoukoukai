@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  #新規登録orログインしていないユーザーに観覧等の制限をかける
+  # 新規登録orログインしていないユーザーに観覧等の制限をかける(この記述はとても重要、必ず記述する様にする)
   before_action :authenticate_user!
+  # ゲストログイン状態の場合、編集ページに飛べない様にまた更新出来ない様にする記述
   before_action :check_guest_user, only: [:edit, :update]
 
   def index
@@ -58,6 +59,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :introduction, :password)
   end
 
+  # ゲストログインしている場合、観覧出来るページを制限する記述
   def check_guest_user
     redirect_to root_path, notice: 'ゲストユーザーは見ることができません。' if current_user.email == 'guest@example.com'
   end

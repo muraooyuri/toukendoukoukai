@@ -1,7 +1,7 @@
 class ToukensController < ApplicationController
-  #新規登録orログインしていないユーザーに観覧等の制限をかける
+  # 新規登録orログインしていないユーザーに観覧等の制限をかける(この記述はとても重要、必ず記述する様にする)
   before_action :authenticate_user!
-
+  # ゲストログイン状態の場合、【新規投稿・編集ページ・投稿の更新、投稿の削除】が出来ない様にする記述
   before_action :check_guest_user, only: [:new, :create, :edit, :update, :destroy]
 
   def new
@@ -70,6 +70,7 @@ class ToukensController < ApplicationController
     params.require(:touken).permit(:title, :body, :image, :genre_id)
   end
 
+  # ゲストログインしている場合、観覧出来るページを制限する記述
   def check_guest_user
     redirect_to root_path, notice: 'ゲストユーザーは見ることができません。' if current_user.email == 'guest@example.com'
   end
