@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   before_action :check_guest_user, only: [:edit, :update]
 
   def index
+    # 【投稿したユーザー】と紐付けられているものを検索結果として表示させる
     if params[:range] == "Touken"
       redirect_to toukens_path(keyword: params[:keyword])
     end
@@ -52,10 +53,12 @@ class UsersController < ApplicationController
   private
 
   def user_params
+    # require(:オブジェクト名).permit【変更を加えられる、保存の処理ができる】(キーを指定)
     params.require(:user).permit(:name, :introduction)
   end
 
   def user_with_password_params
+    # require(:オブジェクト名).permit【変更を加えられる、保存の処理ができる】(キーを指定)
     params.require(:user).permit(:name, :introduction, :password)
   end
 

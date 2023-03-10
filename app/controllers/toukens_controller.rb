@@ -24,6 +24,7 @@ class ToukensController < ApplicationController
   end
 
   def index
+    # 【投稿内容】と紐付けられているユーザーを検索結果として表示させる
     if params[:range] == "User"
       redirect_to users_toukens_path(keyword: params[:keyword])
     end
