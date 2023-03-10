@@ -68,6 +68,7 @@ class ToukensController < ApplicationController
   private
 
   def touken_params
+    # require(:オブジェクト名).permit【変更を加えられる、保存の処理ができる】(キーを指定)
     params.require(:touken).permit(:title, :body, :image, :genre_id)
   end
 
