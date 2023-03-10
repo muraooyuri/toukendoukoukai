@@ -1,3 +1,5 @@
+# deviseをインストールしている場合はdevise用の.ja.ymlファイルも必要
+
 ja:
   activerecord:
     attributes:

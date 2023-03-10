@@ -1,19 +1,24 @@
 ---
+# バリデーションを日本語で表示させる為のファイル
 ja:
   activerecord:
     models:
       touken: "刀剣"
       user: "ユーザー"
     attributes:
-      #ここから モデル毎の属性名
+      # ここから モデル毎の属性名
+  # モデル名
       touken:
+    # カラム名
         title: "題名"
         body: "投稿内容"
         genre: "ジャンル"
+  # モデル名
       user:
+    # カラム名
         email: "メールアドレス"
         name: "名前"
-      #ここまで　モデル毎の属性名
+      # ここまで　モデル毎の属性名
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

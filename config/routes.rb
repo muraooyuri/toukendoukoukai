@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   resources :genres, only: [:index, :new, :_sidebar] do
     resources :toukens, only: :index, module: :genres
   end
+  
     #実際に表示される #コントローラ名#アクション名  #パスを記述する
     get 'users/toukens' => 'users#index', as: 'users_toukens'
     

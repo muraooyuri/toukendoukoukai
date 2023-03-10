@@ -32,6 +32,8 @@
 ].each { |name| Genre.find_or_create_by(name:) }
 genre_ids = Genre.all.pluck(:id)
 
+# 上記のジャンルを画面に表示させる時はターミナル上で(＄ rails seed)を実行しないと反映されない
+
 Admin.create!(
   email: 'touken@doucoukai.com',
   password: 'touken112'

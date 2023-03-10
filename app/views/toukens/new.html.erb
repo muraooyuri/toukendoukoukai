@@ -14,10 +14,12 @@
         <%= form_with model: @touken, multipart: true do |f|%>
            <div class="form-group">
               <label for="touken_title">題名</label><br>
+              <!--入力ボックスにデザイン性を持たせる記述：(class: 'form-control')-->
               <%= f.text_field :title, class: 'form-control' %>
            </div>
            <div class="form-group">
               <label for="touken_body">投稿内容</label><br>
+              <!--入力ボックスにデザイン性を持たせる記述：(class: 'form-control')-->
               <%= f.text_area :body, class: 'form-control' %>
            </div>
            <div class="form-group">

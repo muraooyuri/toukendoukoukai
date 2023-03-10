@@ -14,10 +14,12 @@
           <%= form_with model: @touken do |f| %>
            <div class="form-group">
             <label for="toukenTitle">題名</label><br>
+             <!--入力ボックスにデザイン性を持たせる記述：(class: 'form-control')-->
              <%= f.text_field :title, autofocus: true, id:"touken_title", class: 'form-control' %><br>
            </div>
            <div class="form-group">
             <label for="toukenBody">投稿内容</label><br>
+             <!--入力ボックスにデザイン性を持たせる記述：(class: 'form-control')-->
              <%= f.text_area :body, class: 'form-control' %><br>
            </div>
            <div class="row">
