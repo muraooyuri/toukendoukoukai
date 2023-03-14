@@ -39,7 +39,7 @@ $enable-rounded: false;
   height: 80px;
 }
 
-/* ヘッダーにグラデーションにする記述 */
+/* ヘッダーをグラデーションに装飾する記述 */
 /* ( )の中にカラーコードを記述する */
 .box1 {
   background: linear-gradient(#0000CC, #000000);
@@ -89,7 +89,7 @@ body {
   }
 }
 
-/* スクロールした時に画面上に戻るボタン */
+/* 下にスクロールした時に現れるアイコン：画面上に戻るボタン */
 .page-top {
   display: none;
   position: fixed;
@@ -97,7 +97,7 @@ body {
   right: 20px;
 }
 
-/* ヘッダーのアイコン */
+/* ヘッダーのアイコンサイズ */
 .page-top img {
   width: 80px;
   height: 80px;
