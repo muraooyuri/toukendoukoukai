@@ -1,6 +1,6 @@
 $enable-rounded: false;
 @import '~bootstrap/scss/bootstrap';
-/* ここから 各端末毎に画面幅を変える記述 */
+
 .container {
     padding-right: 15px;
     padding-left: 15px;
@@ -8,6 +8,8 @@ $enable-rounded: false;
     margin-left: auto;
 }
 
+/* ここから 各画面サイズ事に画面幅を対応させる記述 */
+/* 画面に対応させるには<div class= "container"></div>をビューページに記述する*/ 
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -25,12 +27,12 @@ $enable-rounded: false;
     width: 1170px;
   }
 }
-/*ここまで 各端末毎に画面幅を変える記述 */
+/*ここまで 各画面サイズ事に画面幅を対応させる記述 */
 
 /*カード型の表示のレイアウト*/
 .genre-card-image {
-  width: 100%;
-  height: 100px; /* カード内の画像の高さを変更するときはココ！*/
+  width: 100%; /* カード内の画像の【幅】を変更するときはココ！*/
+  height: 100px; /* カード内の画像の【高さ】を変更するときはココ！*/
   object-fit: cover;
 }
 /*ヘッダーのアイコンサイズ*/
@@ -39,7 +41,7 @@ $enable-rounded: false;
   height: 80px;
 }
 
-/* ヘッダーをグラデーションに装飾する記述 */
+/* ヘッダーにグラデーションの装飾をする記述 */
 /* ( )の中にカラーコードを記述する */
 .box1 {
   background: linear-gradient(#0000CC, #000000);
@@ -50,12 +52,13 @@ $enable-rounded: false;
 /* 背景画像のCSS */
 body {
   /* 画像ファイルの指定 */
+  /* 画像データは：app/assets/images/wallpaper-katana-01.jpg */ 
   background-image: url("../images/wallpaper-katana-tn.jpg");
 
   /* 画像を常に天地左右の中央に配置 */
   background-position: center center;
 
-  /* 画像をタイル状に繰り返し表示しない */
+  /* 画像をタイル状(画像の下に同じ画像)に繰り返し表示しない */
   background-repeat: no-repeat;
 
   /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
@@ -81,7 +84,7 @@ body {
 /* Bootstrapの.table-hoverのオーバーライド */
 .table-hover {
   tbody tr {
-    /* 優先して下さいの意 */
+    /* @include hover：優先して下さいの意 */
     @include hover() {
       color: #fff !important;
       background-color: #000 !important;
@@ -97,7 +100,7 @@ body {
   right: 20px;
 }
 
-/* ヘッダーのアイコンサイズ */
+/* 下にスクロールした時に現れるアイコンのサイズ */
 .page-top img {
   width: 80px;
   height: 80px;
@@ -114,6 +117,7 @@ body {
   background:#eee;
 }
 
+/* サイドバーにあるジャンル項目の書体 */ 
 .side-genre {
   font-family: 'Hiragino Mincho ProN' !important;
 }

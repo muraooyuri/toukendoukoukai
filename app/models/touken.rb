@@ -10,6 +10,8 @@ class Touken < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
   
+  # ( presence: true )入力部分が空白の場合エラーメッセージが表示される
+  # ( length:{maximum: 50}  length:{maximum: 200} )【最大】の入力文字数
   validates :title, presence: true, length:{maximum: 50}
   validates :body, presence: true, length:{maximum: 200}
   
