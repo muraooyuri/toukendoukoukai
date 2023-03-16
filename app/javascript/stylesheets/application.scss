@@ -8,26 +8,29 @@ $enable-rounded: false;
     margin-left: auto;
 }
 
+
 /* ここから 各画面サイズ事に画面幅を対応させる記述 */
 /* 画面に対応させるには<div class= "container"></div>をビューページに記述する*/ 
+/* スマホ画面サイズ */ 
 @media (min-width: 768px) {
   .container {
     width: 750px;
   }
 }
-
+/* IPad画面サイズ */ 
 @media (min-width: 992px) {
   .container {
     width: 970px;
   }
 }
-
+/* PC画面サイズ */ 
 @media (min-width: 1200px) {
   .container {
     width: 1170px;
   }
 }
 /*ここまで 各画面サイズ事に画面幅を対応させる記述 */
+
 
 /*カード型の表示のレイアウト*/
 .genre-card-image {
