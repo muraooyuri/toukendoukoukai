@@ -17,7 +17,7 @@ $enable-rounded: false;
     width: 750px;
   }
 }
-/* IPad画面サイズ */ 
+/* iPad画面サイズ */ 
 @media (min-width: 992px) {
   .container {
     width: 970px;
@@ -38,7 +38,7 @@ $enable-rounded: false;
   height: 100px; /* カード内の画像の【高さ】を変更するときはココ！*/
   object-fit: cover;
 }
-/*ヘッダーのアイコンサイズ*/
+/*ヘッダーに表示されている【アイコンサイズ】*/
 .touken {
   width: 80px;
   height: 80px;

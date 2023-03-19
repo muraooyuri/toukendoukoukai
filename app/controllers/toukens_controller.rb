@@ -65,15 +65,16 @@ class ToukensController < ApplicationController
     end
   end
 
+
   private
 
-  def touken_params
-    # require(:オブジェクト名).permit【変更を加えられる、保存の処理ができる】(キーを指定)
-    params.require(:touken).permit(:title, :body, :image, :genre_id)
-  end
-
-  # ゲストログインしている場合、観覧出来るページを制限する記述
-  def check_guest_user
-    redirect_to root_path, notice: 'ゲストユーザーは見ることができません。' if current_user.email == 'guest@example.com'
-  end
+    def touken_params
+      # require(:オブジェクト名).permit【変更を加えられる、保存の処理ができる】(キーを指定)
+      params.require(:touken).permit(:title, :body, :image, :genre_id)
+    end
+  
+    # ゲストログインしている場合、観覧出来るページを制限する記述
+    def check_guest_user
+      redirect_to root_path, notice: 'ゲストユーザーは見ることができません。' if current_user.email == 'guest@example.com'
+    end
 end

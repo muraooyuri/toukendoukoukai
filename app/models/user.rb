@@ -9,8 +9,8 @@ class User < ApplicationRecord
   has_many :touken_comments, dependent: :destroy
   
   # ( presence: true )入力部分が空白の場合エラーメッセージが表示される
-  # ( length:length:{minimum: 2... )【最少】の入力文字数
-  # ( length:{maximum: 20} )【最大】の入力文字数
+  # ( length:length:{minimum: 2... )【min(最少)】の入力文字数
+  # ( length:{maximum: 20} )【max(最大)】の入力文字数
   validates :name, presence: true, uniqueness: true, length:{minimum: 2, maximum: 20}
   validates :introduction, length:{maximum: 50}
 
@@ -22,6 +22,7 @@ class User < ApplicationRecord
     end
   end
 
+  # キーワード(ユーザー名)で検索出来る様にする記述
   def self.search(keyword)
     if keyword.present?
           # ('name LIKE ?', "#{keyword}%")とワンセットで記述

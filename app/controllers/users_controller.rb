@@ -36,6 +36,7 @@ class UsersController < ApplicationController
     if params[:user][:password].blank?
       # プロフィール編集のみ
       if @user.update(user_params)
+        # 更新後に飛ぶビュー画面(userのedit)、更新後に表示されるメッセージ(notice:'...')
         redirect_to edit_user_path(current_user), notice: 'プロフィールの更新に成功しました。'
       else
         render :edit
@@ -43,6 +44,7 @@ class UsersController < ApplicationController
     else
       # パスワード変更を含む
       if @user.update(user_with_password_params)
+        # 変更後に飛ぶビュー画面(homesのtop)、変更後に表示されるメッセージ(notice:'...')
         redirect_to root_path, notice: 'パスワードが変更されたのでログアウトしました。'
       else
         render :edit
@@ -50,20 +52,21 @@ class UsersController < ApplicationController
     end
   end
 
+
   private
 
-  def user_params
-    # require(:オブジェクト名).permit【変更を加えられる、保存の処理ができる】(キーを指定)
-    params.require(:user).permit(:name, :introduction)
-  end
-
-  def user_with_password_params
-    # require(:オブジェクト名).permit【変更を加えられる、保存の処理ができる】(キーを指定)
-    params.require(:user).permit(:name, :introduction, :password)
-  end
-
-  # ゲストログインしている場合、観覧出来るページを制限する記述
-  def check_guest_user
-    redirect_to root_path, notice: 'ゲストユーザーは見ることができません。' if current_user.email == 'guest@example.com'
-  end
+    def user_params
+      # require(:オブジェクト名).permit【変更を加えられる、保存の処理ができる】(キーを指定)
+      params.require(:user).permit(:name, :introduction)
+    end
+  
+    def user_with_password_params
+      # require(:オブジェクト名).permit【変更を加えられる、保存の処理ができる】(キーを指定)
+      params.require(:user).permit(:name, :introduction, :password)
+    end
+  
+    # ゲストログインしている場合、観覧出来るページを制限する記述
+    def check_guest_user
+      redirect_to root_path, notice: 'ゲストユーザーは見ることができません。' if current_user.email == 'guest@example.com'
+    end
 end

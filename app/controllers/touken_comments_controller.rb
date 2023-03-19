@@ -17,10 +17,11 @@ class ToukenCommentsController < ApplicationController
     redirect_to touken_path(@touken)
   end
 
+
   private
 
-  def touken_comment_params
-     params.require(:touken_comment).permit(:comment)
-  end
+    def touken_comment_params
+       params.require(:touken_comment).permit(:comment)
+    end
 
 end

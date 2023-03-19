@@ -1,84 +1,84 @@
 <!DOCTYPE html>
 <html>
-   <head>
-     <title>刀剣同好会</title>
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-       <%= csrf_meta_tags %>
-       <%= csp_meta_tag %>
+    <head>
+      <title>刀剣同好会</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+         <%= csrf_meta_tags %>
+         <%= csp_meta_tag %>
 
-       <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-       <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-       <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-   </head>
+         <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+         <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+         <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
   <body>
   <!--ヘッダーの色指定:カラー指定は【app/javasc.../styles.../application.scss】ファイル-->
   <div class="box1">
-   <!--.navbar は .navbar-expand{-sm|-md|-lg|-xl} と color scheme が必要です。-->
-   <nav class="navbar navbar-expand-lg navbar-dark">
-     <div class="container">
-       <!--アイコンをクリックした時のリンク先-->
-        <%= link_to root_path do %>
-          <!--アイコンの画像データ："logo.png"は画像データのファイル名【assets/images】-->
-          <%= image_tag "logo.png", class: "touken" %>
-        <% end %>
-        <!--ここから：レスポンシブル対応の時に表示される3本線のアイコン-->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <!--ここまで：レスポンシブル対応の時に表示される3本線のアイコン--> 
-        <!--アイコンをクリックするとメニュー(３本線)が開閉する記述-->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <!--メニュー欄を右寄せにする記述-->
-          <ul class="navbar-nav ml-auto">
-           <% if user_signed_in? %>
-            <!--直接の親 (class: 'nav-items')-->
-            <li class="nav-item">
-              <!--現位置のページ (class: 'nav-link')-->
-              <%= link_to "ユーザーホーム", user_path(current_user), class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "新規投稿", new_touken_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "刀剣情報", toukens_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "投稿者情報", users_toukens_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "プロフィール編集", edit_user_path(current_user), class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link' %>
-            </li>
-           <% else %>
-            <li class="nav-item">
-              <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: 'nav-link', method: :post %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
-            </li>
-           <% end %>
-          </ul>
-       </div>
-     </div>
-   </nav>
-  </div>
-    <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
-        <footer>
-          <div class="container mt-5">
-           <div class="row">
-             <div class="mx-auto">
-              <p>刀剣同好会</p>
-             </div>
-           </div>
+     <!--.navbar は .navbar-expand{-sm|-md|-lg|-xl} と color scheme が必要です。-->
+     <nav class="navbar navbar-expand-lg navbar-dark">
+       <div class="container">
+          <!--アイコンをクリックした時のリンク先-->
+          <%= link_to root_path do %>
+             <!--アイコンの画像データ："logo.png"は画像データのファイル名【assets/images】-->
+             <%= image_tag "logo.png", class: "touken" %>
+          <% end %>
+            <!--ここから：レスポンシブル対応の時に表示される3本線のアイコン-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <!--ここまで：レスポンシブル対応の時に表示される3本線のアイコン--> 
+          <!--アイコンをクリックするとメニュー(３本線)が開閉する記述-->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!--メニュー欄を右寄せにする記述-->
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                  <!--直接の親 (class: 'nav-item')-->
+                  <li class="nav-item">
+                    <!--現位置のページ (class: 'nav-link')-->
+                    <%= link_to "ユーザーホーム", user_path(current_user), class: 'nav-link' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "新規投稿", new_touken_path, class: 'nav-link' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "刀剣情報", toukens_path, class: 'nav-link' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "投稿者情報", users_toukens_path, class: 'nav-link' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "プロフィール編集", edit_user_path(current_user), class: 'nav-link' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+                  </li>
+                <% else %>
+                  <li class="nav-item">
+                    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: 'nav-link', method: :post %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
+                  </li>
+              <% end %>
+            </ul>
           </div>
-        </footer>
+       </div>
+     </nav>
+  </div>
+     <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+    <%= yield %>
+       <footer>
+          <div class="container mt-5">
+            <div class="row">
+              <div class="mx-auto">
+                <p>刀剣同好会</p>
+              </div>
+            </div>
+          </div>
+       </footer>
       <div class="page-top">
         <%= image_tag 'logo.png'%>
       </div>

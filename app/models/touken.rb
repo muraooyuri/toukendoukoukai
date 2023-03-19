@@ -11,11 +11,11 @@ class Touken < ApplicationRecord
   end
   
   # ( presence: true )入力部分が空白の場合エラーメッセージが表示される
-  # ( length:{maximum: 50}  length:{maximum: 200} )【最大】の入力文字数
+  # ( length:{maximum: 50}  length:{maximum: 200} )【max(最大)】の入力文字数
   validates :title, presence: true, length:{maximum: 50}
   validates :body, presence: true, length:{maximum: 200}
   
-  #検索ワード機能の記述
+  # キーワード(投稿タイトル・投稿内容)で検索出来る様にする記述
   def self.search(keyword)
     if keyword.present?
       # ('title LIKE ?', "#{keyword}%")とワンセットで記述：LIKE部分は小文字でもOK
