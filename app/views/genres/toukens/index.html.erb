@@ -1,17 +1,17 @@
 <main>
   <div class="container mt-4">
-    <h3><%= @genre.name %>の投稿一覧</h3>
+   <h3><%= @genre.name %>の投稿一覧</h3>
     <div class="row text-dark">
       <% @genre.toukens.each do |touken| %>
         <div class="col-md-3">
           <div class="card">
             <% if touken.image.attached? %>
               <%= image_tag touken.image, class: 'card-img-top' %>
-            <% else %>
+           <% else %>
               <%= image_tag 'no_image.jpg', class: 'card-img-top' %>
             <% end %>
             <div class="card-body">
-              <!--文字の表示を小さくする記述-->
+              <!--文字の表示を小さくする記述：(class="small text-secondary")-->
               <h6 class="small text-secondary">題名</h6>
                 <h5 class="card-title">
                   <%= link_to touken_path(touken) do %>
@@ -19,9 +19,10 @@
                   <% end %>
                 </h5>
               <div class="card-text">
-                <!--文字の表示を小さくする記述-->
+                <!--文字の表示を小さくする記述：(class="small text-secondary")-->
                 <h6 class="small text-secondary">内容</h6>
                 <div>
+                  <!--投稿内容が長文の場合、20文字で終わり最後に(...)で表示させる記述-->
                   <%= touken.body.truncate(20) %>
                 </div>
               </div>
