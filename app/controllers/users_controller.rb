@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  # 【ログイン済】のユーザーのみにアクセスを許可する(この記述はとても重要、必ず記述する様にする)
+  # 【新規登録済orログイン済】のユーザーのみにアクセスを許可する(この記述はとても重要、必ず記述する様にする)
   before_action :authenticate_user!
-  # ゲストログイン、またゲストは編集ページに飛べない様に更新出来ない様にする
+  # ゲストログイン、またゲストはユーザ情報等の【編集ページに飛べない様】に【更新出来ない様】にする
   before_action :check_guest_user, only: [:edit, :update]
 
   def index
@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @users = User.search(params[:keyword])
     @touken = Touken.new
     @user = current_user
+    # ジャンルを表示させるビューに全て記述
     @genres = Genre.all
   end
 
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @touken = Touken.new
     @toukens= @user.toukens
+    # ジャンルを表示させるビューに全て記述
     @genres = Genre.all
   end
 

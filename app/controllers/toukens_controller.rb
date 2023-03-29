@@ -1,17 +1,19 @@
 class ToukensController < ApplicationController
-  # 【ログイン済】のユーザーのみにアクセスを許可する(この記述はとても重要、必ず記述する様にする)
+  # 【新規登録済orログイン済】のユーザーのみにアクセスを許可する(この記述はとても重要、必ず記述する様にする)
   before_action :authenticate_user!
   # ゲストログイン状態の場合、【新規投稿・編集ページ・投稿の更新、投稿の削除】が出来ない様にする記述
   before_action :check_guest_user, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @touken = Touken.new
+    # ジャンルを表示させるビューに全て記述
     @genres = Genre.all
   end
 
   def create
     @touken = Touken.new(touken_params)
     @touken.user_id = current_user.id
+    # ジャンルを表示させるビューに全て記述
     @genres = Genre.all
     if @touken.save
       flash[:notice] = "投稿が完了しました"
@@ -30,6 +32,7 @@ class ToukensController < ApplicationController
     end
     @toukens = Touken.search(params[:keyword])
     @user = current_user
+    # ジャンルを表示させるビューに全て記述
     @genres = Genre.all
   end
 
@@ -39,6 +42,7 @@ class ToukensController < ApplicationController
     @touken_comments = @touken.id
     @touken_new = Touken.new
     @user = @touken.user
+    # ジャンルを表示させるビューに全て記述
     @genres = Genre.all
   end
 
