@@ -6,14 +6,14 @@ class ToukensController < ApplicationController
 
   def new
     @touken = Touken.new
-    # ジャンルを表示させるビューに全て記述
+    # ジャンル機能を適用させて表示する箇所全てに記述
     @genres = Genre.all
   end
 
   def create
     @touken = Touken.new(touken_params)
     @touken.user_id = current_user.id
-    # ジャンルを表示させるビューに全て記述
+    # ジャンル機能を適用させて表示する箇所全てに記述
     @genres = Genre.all
     if @touken.save
       flash[:notice] = "投稿が完了しました"
@@ -32,7 +32,7 @@ class ToukensController < ApplicationController
     end
     @toukens = Touken.search(params[:keyword])
     @user = current_user
-    # ジャンルを表示させるビューに全て記述
+    # ジャンル機能を適用させて表示する箇所全てに記述
     @genres = Genre.all
   end
 
@@ -42,7 +42,7 @@ class ToukensController < ApplicationController
     @touken_comments = @touken.id
     @touken_new = Touken.new
     @user = @touken.user
-    # ジャンルを表示させるビューに全て記述
+    # ジャンル機能を適用させて表示する箇所全てに記述
     @genres = Genre.all
   end
 

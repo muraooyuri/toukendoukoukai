@@ -3,7 +3,7 @@ class GenresController < ApplicationController
   before_action :authenticate_user!
 
   def _sidebar
-    # ジャンルを表示させるビューに全て記述
+    # ジャンル機能を適用させて表示する箇所全てに記述
     @genres = Genre.all
   end
 end
