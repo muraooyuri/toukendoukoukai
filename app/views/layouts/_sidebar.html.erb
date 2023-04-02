@@ -4,7 +4,7 @@
     <%= form_with url: toukens_path, :id => "form", local: true, method: :get do |form| %>
       <%= form.text_field :keyword, :placeholder => "入力して下さい ", class: 'sbox form-control' %>
       <%= form.select :range, options_for_select([[ 'ユーザー','User'], ['刀剣','Touken']]) %>
-      <!--検索機能のプルダウン：([[ '画面に表示される文字','コントローラ名']])-->
+      <!--検索機能のプルダウン：([[ '画面上に表示される文字','コントローラ名']])-->
       <%= form.submit '検索', class: 'side-btn' %>
     <% end %>
     </div>

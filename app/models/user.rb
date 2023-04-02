@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   # ゲストログインの記述
   def self.guest
+    # (name: 'guestuser' ,email: 'guest@example.com')ゲストログイン時の仮のメールアドレスとユーザー名とパスワード
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"

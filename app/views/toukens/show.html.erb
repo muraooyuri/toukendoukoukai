@@ -23,16 +23,20 @@
       <!--        <th>写真</th>-->
       <!--        <th>コメント件数</th>-->
           <% if @touken.user == current_user %>
+            <!--ここから：投稿内容をカード形式で表示させる記述-->
             <div class="card mb-4">
               <%= image_tag @touken.image.variant(resize: '2048x2048^').processed %>
               <div class="card-body">
+                <!--表示される文字を小さくする記述(class="small text-secondary")-->
                 <h6 class="small text-secondary">ジャンル</h6>
                   <%= @touken.genre.name%>
                 <div class="my-2">
+                  <!--表示される文字を小さくする記述(class="small text-secondary")-->
                   <h6 class="small text-secondary">題名</h6>
                   <h5 class="card-title"><%= @touken.title %></h5>
                 </div>
                 <p class="card-text">
+                  <!--表示される文字を小さくする記述(class="small text-secondary")-->
                   <h6 class="small text-secondary">投稿内容</h6>
                   <%= simple_format(@touken.body) %>
                 </p>
@@ -46,6 +50,7 @@
                 <%= render "favorites/favorite", touken: @touken %>
               </div>
             </div>
+            <!--ここまで：投稿内容をカード形式で表示させる記述-->
           <% end %>
         </div>
       <!--     </tr>-->
