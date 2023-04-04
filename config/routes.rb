@@ -1,17 +1,23 @@
 Rails.application.routes.draw do
 
+  # 管理者側で不適切な投稿内容や投稿に関するコメントを削除する為の記述
   namespace :admin do
     #root to: 'homes#top'
     resources :toukens, only: [:index, :destroy]
     resources :touken_comments, only: [:index, :destroy]
   end
+  # 管理者側は新規登録とログインする為のパスワードが必要のないので省く記述
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
 
+  # 各ジャンルの一覧(index)ページに飛ぶ為の記述
   namespace :genres do
-  get 'toukens/index'
+    get 'toukens/index'
   end
 
-  get 'genres/index'
-  get 'search' => 'searches#search'
+    get 'genres/index'
+    get 'search' => 'searches#search'
 
   devise_for :users
   devise_scope :user do
@@ -21,9 +27,9 @@ Rails.application.routes.draw do
   #get 'home/about'=>'homus#about', as: 'about'
   root to: 'homus#top'
 
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
-  }
+  # devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  #   sessions: "admin/sessions"
+  # }
 
   resources :toukens, only: [:create, :new, :index, :show, :destroy, :edit, :update] do
     resource :favorites, only: [:create, :destroy]
